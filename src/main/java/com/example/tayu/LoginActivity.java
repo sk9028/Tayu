@@ -32,11 +32,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //define view objects
     EditText editTextEmail;
     EditText editTextPassword;
-    Button buttonSignin;
+    TextView buttonSignin;
     TextView textviewSingin;
     TextView textviewMessage;
     TextView textviewFindPassword;
     ProgressDialog progressDialog;
+    Button Back;
     //define firebase object
     FirebaseAuth firebaseAuth;
     SignInButton Google_Login;
@@ -74,7 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textviewSingin= (TextView) findViewById(R.id.textViewSignin);
         textviewMessage = (TextView) findViewById(R.id.textviewMessage);
         textviewFindPassword = (TextView) findViewById(R.id.textViewFindpassword);
-        buttonSignin = (Button) findViewById(R.id.buttonSignup);
+        buttonSignin = (TextView) findViewById(R.id.buttonSignup);
+        Back = (Button)findViewById(R.id.Back);
         progressDialog = new ProgressDialog(this);
         Google_Login = (SignInButton) findViewById(R.id.Google_Login);
 
@@ -83,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textviewSingin.setOnClickListener(this);
         textviewFindPassword.setOnClickListener(this);
         Google_Login.setOnClickListener(this);
+        Back.setOnClickListener(this);
     }
 
     //firebase userLogin method
@@ -133,6 +136,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view == textviewFindPassword) {
             finish();
             startActivity(new Intent(this, FindActivity.class));
+        }
+        if(view == Back) {
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
         }
         if(view == Google_Login){
             Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);

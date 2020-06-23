@@ -26,7 +26,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     //view objects
     private TextView textViewUserEmail;
     private Button buttonLogout;
-    private TextView textivewDelete;
+    private Button textivewDelete;
+    private Button buttonMain;
 
 
     @Override
@@ -37,7 +38,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
-        textivewDelete = (TextView) findViewById(R.id.textviewDelete);
+        buttonMain = (Button) findViewById(R.id.buttonMain);
+        textivewDelete = (Button) findViewById(R.id.textviewDelete);
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -51,11 +53,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         //textViewUserEmail의 내용을 변경해 준다.
-        textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
+        textViewUserEmail.setText("반갑습니다. "+ user.getEmail()+"님!");
 
         //logout button event
         buttonLogout.setOnClickListener(this);
         textivewDelete.setOnClickListener(this);
+        buttonMain.setOnClickListener(this);
 
 
     }
@@ -94,9 +97,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             });
             alert_confirm.show();
         }
+        if(view == buttonMain)
+        {
+            finish();
+            startActivity(new Intent(this, HomeActivity.class));
+        }
     }
 }
-
-
-
 

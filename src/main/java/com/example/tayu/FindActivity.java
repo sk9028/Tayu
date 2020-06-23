@@ -22,6 +22,7 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
     //define view objects
     private EditText editTextUserEmail;
     private Button buttonFind;
+    private Button Back;
     private TextView textviewMessage;
     private ProgressDialog progressDialog;
     //define firebase object
@@ -36,11 +37,12 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
 
         editTextUserEmail = (EditText) findViewById(R.id.editTextUserEmail);
         buttonFind = (Button) findViewById(R.id.buttonFind);
+        Back = (Button) findViewById(R.id.Back);
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonFind.setOnClickListener(this);
-
+        Back.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +67,11 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     });
 
+        }
+        if(view == Back)
+        {
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 }

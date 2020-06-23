@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +54,13 @@ public class Fragment2 extends Fragment implements TMapGpsManager.onLocationChan
 
     private Button bt_find; //주소로 찾기 버튼
     private Button bt_fac;  //주변 편의시설 찾기 버튼
+
+    @Override
+    public void onLocationChange(Location location) {
+        if (m_bTrackingMode) {
+            tmapview.setLocationPoint(location.getLongitude(), location.getLatitude());
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,7 +137,7 @@ public class Fragment2 extends Fragment implements TMapGpsManager.onLocationChan
                     }
                 });
 
-                //Toast.makeText(MainActivity.this, "주소 : " + address, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "주소 : " + address, Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -138,11 +146,11 @@ public class Fragment2 extends Fragment implements TMapGpsManager.onLocationChan
         bt_find.setOnClickListener(this);
         bt_fac.setOnClickListener(this);
 
-        return null;
+        return viewGroup;
     }
     public void addPoint() {
         // 강남 //
-        m_mapPoint.add(new MapPoint("강남", 37.510350, 127.066847));
+        m_mapPoint.add(new MapPoint("강남", 100, 127.066847));
     }
 
     // 마커(핀) 찍는함수
@@ -182,13 +190,12 @@ public class Fragment2 extends Fragment implements TMapGpsManager.onLocationChan
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bt_findadd:
-                convertToAddress();
-                break;
-            case R.id.bt_findfac:
-                getAroundBizPoi();
-                break;
+        if(view == bt_find) {
+            convertToAddress();
+
+        }
+        if(view == bt_fac){
+            getAroundBizPoi();
         }
     }
 
@@ -196,6 +203,7 @@ public class Fragment2 extends Fragment implements TMapGpsManager.onLocationChan
     /* 명칭 검색을 통한 주소 변환 */
     public void convertToAddress() {
         //다이얼로그 띄워서, 검색창에 입력받음
+        
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle("POI 통합 검색");
 
@@ -256,12 +264,7 @@ public class Fragment2 extends Fragment implements TMapGpsManager.onLocationChan
 
 
 
-    @Override
-    public void onLocationChange(Location location) {
-        if (m_bTrackingMode) {
-            tmapview.setLocationPoint(location.getLongitude(), location.getLatitude());
-        }
-    }
+
 
 
 

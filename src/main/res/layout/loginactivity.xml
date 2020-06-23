@@ -8,70 +8,99 @@
     android:background="#7ab9fd"
     tools:context="com.js.firebaseauthentication.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Back"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:background="#7ab9fd"
+            android:text="Back"
+            android:textColor="@android:color/background_light"
+            android:textSize="28dp" />
+
+        <Button
+            android:id="@+id/textViewSignin"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:background="#7ab9fd"
+            android:layout_alignParentRight="true"
+            android:text="Sign up"
+            android:textColor="@android:color/background_light"
+            android:textSize="28dp" />
+    </RelativeLayout>
+
     <TextView
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:textSize="23dp"
-        android:textColor="@color/colorAccent"
-        android:text="로그인" />
+        android:text="TAYU"
+        android:textColor="@android:color/background_light"
+        android:textSize="128sp" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
         android:hint="Enter email"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="250dp"
-        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
         android:hint="Enter password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/buttonSignup"
-        android:layout_width="200dp"
+
+    <RelativeLayout
+        android:layout_width="201dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_gravity="center_horizontal"
-        android:text="로그인" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_gravity="center">
 
         <TextView
-            android:text="신규 회원가입"
-            android:id="@+id/textViewSignin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/buttonSignup"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="#7ab9fd"
+            android:text="로그인하기"
+            android:textColor="@android:color/background_light"
+            android:textSize="14dp" />
 
         <TextView
-            android:text="패스워드가 기억나지 않습니까?"
-            android:textColor="@color/colorAccent"
-            android:layout_marginLeft="16dp"
             android:id="@+id/textViewFindpassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/buttonSignup"
+            android:layout_toRightOf="@+id/buttonSignup"
+            android:background="#7ab9fd"
+            android:text="비밀번호 찾기"
+            android:textColor="@android:color/background_light"
+            android:textSize="14dp" />
+    </RelativeLayout>
 
-    </LinearLayout>
-
-
-    <TextView
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorAccent"
-        android:id="@+id/textviewMessage"
+    | <TextView
+    android:layout_gravity="center_horizontal"
+    android:textColor="@color/colorAccent"
+    android:id="@+id/textviewMessage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/Google_Login"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </LinearLayout>
 
